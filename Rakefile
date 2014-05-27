@@ -95,3 +95,18 @@ task :publish do
    `ssh rufy update-classifier-doc`
     Rake::RubyForgePublisher.new('classifier', 'cardmagic').upload
 end
+
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name        = "classifier"
+    gemspec.summary     = "Ruby Classifier - Bayesian and LSI classification library"
+    gemspec.email       = "lucas@rufy.com"
+    gemspec.homepage    = "https://github.com/cardmagic/classifier"
+    gemspec.add_dependency('fast-stemmer', '>= 1.0.0')
+    gemspec.autorequire = 'classifier'
+    gemspec.has_rdoc    = true
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: gem install jeweler"
+end
